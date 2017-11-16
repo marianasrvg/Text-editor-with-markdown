@@ -6,9 +6,12 @@ public class State {
 	boolean final_state;
 	boolean initial_state;
 	HashMap <Character, Integer> transition;
+	String css = null;
 	
 	
-	public State(){}
+	public State(){
+		transition = new HashMap<Character, Integer>();
+	}
 	
 	public State(String name){
 		this.name = name;
@@ -25,10 +28,29 @@ public class State {
 		this.initial_state = initial_state;
 		transition = new HashMap<Character, Integer>();
 	}
-	
+
 	public void addTransition(char symbol, int state_position){
 		transition.put(symbol, state_position);
 	}
 	
+	public void setState(String name, boolean final_state, boolean initial_state, int position){
+		this.name = name;
+		this.position = position;
+		this.final_state = final_state;
+		this.initial_state = initial_state;
+	}
 	
+	public int getTransition(char x, char default_key){
+		if(transition.containsKey(x)){
+			return transition.get(x);
+		}
+		if(transition.containsKey(default_key)){
+			return transition.get(default_key);
+		}
+		return -1;
+	}
+	
+	public void setCSSName(String css){
+		this.css = css;
+	}
 }
