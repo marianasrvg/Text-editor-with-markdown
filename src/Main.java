@@ -57,19 +57,19 @@ public class Main extends Application {
 		markdown.states[7].addTransition('a', 7);
 	}
 	private static void boldAFD(AFD markdown){
-		markdown.createAFD(10, 3);
+		markdown.createAFD(8, 3);
 		char[] symbols = {'a','*','\n'};
 		markdown.setSymbols(symbols);
 		State auxiliar_state;
-		for(int i = 0; i < 10;i++){
+		for(int i = 0; i < 8;i++){
 			auxiliar_state = new State(Integer.toString(i), false, false, i);
 			markdown.addState(auxiliar_state);
 		}
 		
 		markdown.states[0].initial_state = true;
 		markdown.states[5].final_state = true;
+		markdown.states[6].final_state = true;
 		markdown.states[7].final_state = true;
-		markdown.states[9].final_state = true;
 		
 		markdown.states[0].addTransition('a', 0);
 		markdown.states[0].addTransition('*', 1);
@@ -87,33 +87,68 @@ public class Main extends Application {
 		markdown.states[3].setCSSName("No bold/italic");
 		
 		markdown.states[4].addTransition('a', 4);
-		markdown.states[4].addTransition('*', 6);
+		markdown.states[4].addTransition('*', 5);
 		markdown.states[4].setCSSName("No bold/italic");
 		
-		markdown.states[5].addTransition('a', 8);
+		markdown.states[5].addTransition('a', 7);
+		markdown.states[5].addTransition('*', 6);
 		markdown.states[5].setCSSName("Italic");
 		
-		markdown.states[6].addTransition('a', 4);
-		markdown.states[6].addTransition('*', 7);
-		markdown.states[6].setCSSName("No bold/italic");
+		markdown.states[6].addTransition('a', 7);
+		markdown.states[6].setCSSName("Bold");
 		
-		markdown.states[7].addTransition('a', 8);
-		markdown.states[7].setCSSName("Bold");
+		markdown.states[7].addTransition('a', 7);
+	}
+	private static void bulletAFD(AFD markdown){
+		markdown.createAFD(6, 5);
+		char[] symbols = {'*','#','-','a','.'};
+		markdown.setSymbols(symbols);
+		State auxiliar_state;
+		for(int i = 0; i < 6;i++){
+			auxiliar_state = new State(Integer.toString(i), false, false, i);
+			markdown.addState(auxiliar_state); 
+		}
 		
-		markdown.states[8].addTransition('a', 8);
-		markdown.states[8].addTransition('\n', 9);
-
+		markdown.states[0].initial_state = true;
+		markdown.states[1].final_state = true;
+		markdown.states[3].final_state = true;
+		markdown.states[4].final_state = true;
+		markdown.states[5].final_state = true;
+		
+		markdown.states[0].addTransition('a', 5);
+		markdown.states[0].addTransition('*', 1);
+		markdown.states[0].addTransition('-', 4);
+		markdown.states[0].addTransition('#', 2);
+		markdown.states[0].setCSSName("No bullet");
+		
+		markdown.states[1].addTransition('a', 1);
+		markdown.states[1].setCSSName("Bullet");
+		
+		markdown.states[2].addTransition('.', 3);
+		markdown.states[2].addTransition('a', 5);
+		markdown.states[2].setCSSName("No bullet");
+		
+		markdown.states[3].addTransition('a', 3);
+		markdown.states[3].setCSSName("Numeration");
+		
+		markdown.states[4].addTransition('a', 4);
+		markdown.states[4].setCSSName("Guión");
+				
+		markdown.states[5].addTransition('a', 5);
+		markdown.states[5].setCSSName("No bullet");		
 	}
 	
-	public static void createAFDMarkdown(AFD headermarkdown, AFD boldmarkdown){
+	public static void createAFDMarkdown(AFD headermarkdown, AFD boldmarkdown, AFD bulletmarkdown){
 		headerAFD(headermarkdown);
 		boldAFD(boldmarkdown);
+		bulletAFD(bulletmarkdown);
 	}
 
 	public static void main(String[] args){
 		AFD headermarkdown = new AFD('a');
 		AFD boldmarkdown = new AFD('a');
-		createAFDMarkdown(headermarkdown, boldmarkdown);
+		AFD bulletmarkdown = new AFD('a');
+		createAFDMarkdown(headermarkdown, boldmarkdown, bulletmarkdown);
 		
 
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -123,6 +158,8 @@ public class Main extends Application {
 				string = reader.readLine(); 
 				System.out.println(headermarkdown.getCSS(string));
 				System.out.println(boldmarkdown.getCSS(string));
+				System.out.println(bulletmarkdown.getCSS(string));
+				//System.out.println(bulletmarkdown.getCurrentState(string));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

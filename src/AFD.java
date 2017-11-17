@@ -80,4 +80,16 @@ public class AFD {
 		}
 		return last_css;
 	}
+	
+	public String getCurrentState(String string){
+		char test[] = string.toCharArray();
+		int current_state = initialState();
+		for(int i = 0; i < test.length; i++){
+			current_state = states[current_state].getTransition(test[i], default_key);
+			if(current_state == -1) return "Something went wrong";
+		}
+		return states[current_state].name;
+	}
+	
+	
 }
