@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<SplitPane dividerPositions="0.3" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="657.0" prefWidth="674.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+   <items>
+      <AnchorPane prefHeight="551.0" prefWidth="155.0">
+         <children>
+            <Label alignment="CENTER" layoutX="3.0" layoutY="96.0" prefHeight="27.0" prefWidth="193.0" text="Shortcuts" textAlignment="CENTER" />
+            <Label alignment="CENTER" layoutY="289.0" prefHeight="39.0" prefWidth="193.0" text="Rules" textAlignment="CENTER" />
+            <TextArea editable="false" layoutX="7.0" layoutY="321.0" prefHeight="320.0" prefWidth="185.0" text="HEADERS&#10;# This is  a H1 #&#10;## This is a H2 ##&#10;&#10;BLOCKQUOTES&#10;&gt; This is  a blockquote&#10;&#10;LISTS&#10;*Red&#10;*Green&#10;*Blue&#10;&#10;0.Red&#10;0.Green&#10;0.Blue&#10;&#10;&#10;&#10;" />
+            <TextArea editable="false" layoutX="7.0" layoutY="129.0" prefHeight="160.0" prefWidth="185.0" text="Ctrl + S -&gt; Save&#10;Ctrl + O -&gt; Open&#10;.&#10;.&#10;." />
+            <ImageView fitHeight="79.0" fitWidth="132.0" layoutX="20.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Downloads/images/18813594_306444649797843_5688855982444218603_n.png" />
+               </image>
+            </ImageView>
+            <Label ellipsisString="" layoutX="99.0" layoutY="45.0" lineSpacing="2.0" prefHeight="17.0" prefWidth="92.0" text="Text editor with markdown" wrapText="true" />
+         </children>
+      </AnchorPane>
+      <ScrollPane prefHeight="551.0" prefWidth="393.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="652.0" prefWidth="458.0">
+               <children>
+                  <TextArea layoutX="6.0" layoutY="10.0" prefHeight="633.0" prefWidth="446.0" />
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+   </items>
+</SplitPane>
