@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import utils.Utils;
 
 public class Main extends Application {
 	//implements EventHandler<ActionEvent>
@@ -173,12 +174,7 @@ public class Main extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception{
-		primaryStage.setTitle("Markdown text editor");
-		AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("fxml/TextEditor.fxml"));
-		
-		Scene scene = new Scene(anchorPane);
-		primaryStage.setScene(scene);
-		primaryStage.show();
+		Utils.createWindow(primaryStage, Main.this, "fxml/TextEditor.fxml", "Markdown text editor", null, null);
 	}
 	
 	/*@Override
