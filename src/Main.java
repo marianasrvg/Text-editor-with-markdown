@@ -13,22 +13,28 @@ public class Main extends Application {
 	Button button;
 	
 	private static void mainAFD(AFD markdown){
-		markdown.createAFD(22, 6);
-		char[] symbols = {'a','#','*','1','.','`'};
+		markdown.createAFD(18, 5);
+		char[] symbols = {'a','#','*','1','.'};
 		markdown.setSymbols(symbols);
 		State auxiliar_state;
-		for(int i = 0; i < 9;i++){
+		for(int i = 0; i < 18;i++){
 			auxiliar_state = new State(Integer.toString(i), false, false, i);
 			markdown.addState(auxiliar_state);
 		}
 		
 		markdown.states[0].initial_state = true;
-		markdown.states[8].final_state = true;
+		markdown.states[7].final_state = true;
+		markdown.states[12].final_state = true;
+		markdown.states[13].final_state = true;
+		markdown.states[15].final_state = true;
 		
-		markdown.states[0].addTransition('a', 0);
 		markdown.states[0].addTransition('#', 1);
-		markdown.states[0].setCSSName("No header");
+		markdown.states[0].addTransition('*', 8);
+		markdown.states[0].addTransition('a', 0);
+		markdown.states[0].addTransition('1', 15);
+		markdown.states[0].check_num = true;	//tiene una transición que se tiene que revisar el ASCII numerico
 		
+		//HEADERS
 		markdown.states[1].addTransition('a', 7);
 		markdown.states[1].addTransition('#', 2);
 		markdown.states[1].setCSSName("H1");
@@ -53,8 +59,41 @@ public class Main extends Application {
 		markdown.states[6].addTransition('#', 7);
 		markdown.states[6].setCSSName("H6");
 		
-		markdown.states[7].addTransition('\n', 8);
 		markdown.states[7].addTransition('a', 7);
+		
+		//BULLET - ITALICA - BOLD
+		markdown.states[8].addTransition('*', 9);
+		markdown.states[8].addTransition('a', 10);
+		
+		markdown.states[9].addTransition('a', 11);
+		
+		markdown.states[10].addTransition('a', 10);
+		markdown.states[10].addTransition('*', 12);
+		markdown.states[10].setCSSName("Bullet");
+		
+		markdown.states[11].addTransition('a', 11);
+		markdown.states[11].addTransition('*', 13);
+		
+		markdown.states[12].addTransition('a', 12);
+		markdown.states[12].setCSSName("Italica");
+		
+		markdown.states[13].addTransition('a', 13);
+		markdown.states[13].addTransition('*', 14);
+
+		markdown.states[14].addTransition('a', 14);
+		markdown.states[14].setCSSName("Bold");
+		
+		//Numeracion
+		markdown.states[15].addTransition('.', 16);
+		markdown.states[15].addTransition('a', 17);
+		markdown.states[15].addTransition('1', 15);
+		markdown.states[15].check_num = true;
+	
+		markdown.states[16].addTransition('a', 16);
+		markdown.states[16].setCSSName("Numeracion");
+		
+		markdown.states[17].addTransition('a', 17);
+		
 	}
 	
 	private static void headerAFD(AFD markdown){
@@ -190,10 +229,12 @@ public class Main extends Application {
 	}
 
 	public static void main(String[] args){
-		AFD headermarkdown = new AFD('a');
+		/*AFD headermarkdown = new AFD('a');
 		AFD boldmarkdown = new AFD('a');
 		AFD bulletmarkdown = new AFD('a');
-		createAFDMarkdown(headermarkdown, boldmarkdown, bulletmarkdown);
+		createAFDMarkdown(headermarkdown, boldmarkdown, bulletmarkdown);*/
+		AFD mainmarkdown = new AFD('a');
+		mainAFD(mainmarkdown);
 		
 
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -201,10 +242,11 @@ public class Main extends Application {
 		while(true){
 			try {
 				string = reader.readLine(); 
-				System.out.println(headermarkdown.getCSS(string));
+				/*System.out.println(headermarkdown.getCSS(string));
 				System.out.println(boldmarkdown.getCSS(string));
 				System.out.println(bulletmarkdown.getCSS(string));
-				//System.out.println(bulletmarkdown.getCurrentState(string));
+				System.out.println(bulletmarkdown.getCurrentState(string));*/
+				System.out.println(mainmarkdown.getCSS(string));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

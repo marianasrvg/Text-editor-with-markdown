@@ -5,6 +5,7 @@ public class State {
 	int position;
 	boolean final_state;
 	boolean initial_state;
+	boolean check_num;
 	HashMap <Character, Integer> transition;
 	String css = null;
 	
@@ -53,4 +54,5 @@ public class State {
 	public void setCSSName(String css){
 		this.css = css;
 	}
+	
 }
