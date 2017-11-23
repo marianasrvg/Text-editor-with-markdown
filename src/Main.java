@@ -3,8 +3,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -132,7 +134,7 @@ public class Main extends Application {
 		markdown.states[3].setCSSName("Numeration");
 		
 		markdown.states[4].addTransition('a', 4);
-		markdown.states[4].setCSSName("Guión");
+		markdown.states[4].setCSSName("Guiï¿½n");
 				
 		markdown.states[5].addTransition('a', 5);
 		markdown.states[5].setCSSName("No bullet");		
@@ -145,6 +147,8 @@ public class Main extends Application {
 	}
 
 	public static void main(String[] args){
+		launch(args); //to start the application
+
 		AFD headermarkdown = new AFD('a');
 		AFD boldmarkdown = new AFD('a');
 		AFD bulletmarkdown = new AFD('a');
@@ -165,29 +169,14 @@ public class Main extends Application {
 			}
 		}
 		
-		//launch(args); //to start the application
 	}
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception{
 		primaryStage.setTitle("Markdown text editor");
-		button = new Button();
-		button.setText("Markdown tips!");
-		//button.setOnAction(this);
-		/*button.setOnAction(new EventHandler<ActionEvent>() {
-
-			@Override
-			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
-				System.out.println("type #HEADER1");
-			}
-		});*/
+		AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("fxml/TextEditor.fxml"));
 		
-		button.setOnAction(e->System.out.println("type #HEADER1"));
-		StackPane layout = new StackPane();
-		layout.getChildren().add(button);
-		
-		Scene scene = new Scene(layout, 300, 250);
+		Scene scene = new Scene(anchorPane);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
