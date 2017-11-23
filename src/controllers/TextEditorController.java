@@ -12,8 +12,16 @@ public class TextEditorController {
 	@FXML MenuItem showPreview;
 	
 	@FXML public void onCreate(ActionEvent event) {
-		System.out.println("djihejkrhr");
-		Utils.createWindow(null, TextEditorController.this, "fxml/Preview.fxml", "Preview", null, null);
+		sendToAutomaton();
+		//Utils.createWindow(null, TextEditorController.this, "fxml/Preview.fxml", "Preview", null, null);
 	}
 	
+	private void sendToAutomaton() {
+		String text = "";
+		text = body.getText().replaceAll("\n", System.getProperty("line.separator"));
+		System.out.println(text);
+		for(String line : text.split("\n")) {
+			System.out.println("Line "+ line);
+		}
+	}
 }
