@@ -1,8 +1,6 @@
 package controllers;
 
 
-import java.util.ArrayList;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
@@ -17,15 +15,15 @@ public class TextEditorController {
 	@FXML MenuItem showPreview;
 
 	@FXML public void onCreate(ActionEvent event) {
-		ArrayList<Text> arrayText = sendToAutomaton();
+		Text[] arrayText = sendToAutomaton();
 		Utils.createWindow(null, TextEditorController.this, "fxml/Preview.fxml", "Preview", null, null, arrayText);
 	}
 
-	private ArrayList<Text> sendToAutomaton() {
+	private Text[] sendToAutomaton() {
 		String automaton = "";
 		String text = "";
 		String[] results;
-		ArrayList<Text> arrayText = new ArrayList<>();
+		Text[] arrayText;
 		text = body.getText().replaceAll("\n", System.getProperty("line.separator"));
 
 		//System.out.println(text);
@@ -50,13 +48,12 @@ public class TextEditorController {
 			}
 
 			css.setFont(Font.font("Verdana", FontWeight.BOLD, end));
-			
-			arrayText.add(sBegin);
-			arrayText.add(css);
-			arrayText.add(sEnd);
 
+
+
+			System.out.println("Line "+ line);
 		}
-		return arrayText;
+		return null;
 	}
 
 	public String processLine(String line){

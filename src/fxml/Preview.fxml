@@ -6,6 +6,6 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PreviewController">
    <children>
-      <TextArea fx:id="previewBody" editable="false" prefHeight="594.0" prefWidth="599.0" />
+      <TextArea editable="false" prefHeight="594.0" prefWidth="599.0" />
    </children>
 </AnchorPane>
