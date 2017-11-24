@@ -2,7 +2,9 @@ package utils;
 
 import java.net.URL;
 
+import controllers.TextEditorController;
 import interfaces.WindowState;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +16,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import sun.applet.Main;
 
 public class Utils {
 
@@ -29,23 +32,25 @@ public class Utils {
             if (cssLocation != null) {
             		scene.getStylesheets().add(parent.getClass().getClassLoader().getResource(cssLocation).toExternalForm());
             }
-        
+
             if (stage == null) {
 	            	targetStage.initModality(Modality.APPLICATION_MODAL);
 	            	targetStage.setUserData(userData);
 	            	targetStage.addEventHandler(WindowEvent.WINDOW_SHOWN, new EventHandler<WindowEvent>() {
-	
+
 						@Override
 						public void handle(WindowEvent event) {
 							if (fxmlLoader.getController() instanceof WindowState) {
 								((WindowState) fxmlLoader.getController()).onReady();
 							}
 						}
-	
+
 	            	});
             }
+            
             targetStage.setScene(scene);
             targetStage.show();
+
         }
         catch (Exception e) {
             e.printStackTrace();
