@@ -190,5 +190,10 @@ public class AFD {
 		return finalString;
 	}
 	
-	
+	public String process(String string){
+		String output = "";
+		int index[] = IntProcess(string);
+		output = this.StringProcess(string) +"|"+index[0]+","+index[1]+"|"+this.getCSS(string);
+		return output;
+	}
 }

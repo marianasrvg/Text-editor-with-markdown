@@ -71,10 +71,12 @@ public class Main{
 		
 		markdown.states[7].addTransition('a', 7);
 		
+		//No CSS
 		markdown.states[8].addTransition('a', 8);
 		markdown.states[8].addTransition('*', 9);
 		markdown.states[8].addTransition('/', 13);
 		
+		//BOLD
 		markdown.states[9].addTransition('a', 10);
 		markdown.states[9].signed = true;
 		
@@ -88,6 +90,7 @@ public class Main{
 		markdown.states[12].addTransition('a', 12);
 		markdown.states[12].setCSSName("Bold");
 		
+		//ITALIC
 		markdown.states[13].addTransition('a', 14);
 		markdown.states[13].signed = true;
 		
@@ -95,27 +98,31 @@ public class Main{
 		markdown.states[14].addTransition('/', 15);
 		
 		markdown.states[15].addTransition('a', 16);
-		markdown.states[15].setCSSName("Italica");
+		markdown.states[15].setCSSName("Italic");
 		markdown.states[15].signed = true;
 		
 		markdown.states[16].addTransition('a', 16);
-		markdown.states[16].setCSSName("Italica");
+		markdown.states[16].setCSSName("Italic");
 		
+		//BULLET
 		markdown.states[17].addTransition('a', 18);
 		markdown.states[17].signed = true;
-		
+
 		markdown.states[18].addTransition('a', 18);
 		markdown.states[18].setCSSName("Bullet");
+		
+		//NUMERATION
 		
 		markdown.states[19].addTransition('1', 19);
 		markdown.states[19].addTransition('.', 20);
 		markdown.states[19].addTransition('a', 22);
 		markdown.states[19].check_num = true;
 		
+		
 		markdown.states[20].addTransition('a', 21);
 		
 		markdown.states[21].addTransition('a', 21);
-		markdown.states[21].setCSSName("Numeracion");
+		markdown.states[21].setCSSName("Numeration");
 		
 		markdown.states[22].addTransition('a', 22);		
 	}
@@ -245,7 +252,6 @@ public class Main{
 		markdown.states[5].addTransition('a', 5);
 		markdown.states[5].setCSSName("No bullet");		
 	}
-	
 	public static void createAFDMarkdown(AFD headermarkdown, AFD boldmarkdown, AFD bulletmarkdown){
 		headerAFD(headermarkdown);
 		boldAFD(boldmarkdown);
@@ -253,29 +259,24 @@ public class Main{
 	}
 
 	public static void main(String[] args){
-		/*AFD headermarkdown = new AFD('a');
-		AFD boldmarkdown = new AFD('a');
-		AFD bulletmarkdown = new AFD('a');
-		createAFDMarkdown(headermarkdown, boldmarkdown, bulletmarkdown);*/
+		//Create the AFD with default transition with 'a'
 		AFD mainmarkdown = new AFD('a');
+		//Add transitions
 		mainAFD(mainmarkdown);
 		
-
+		//meanwhile .. read strings forever
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		String string;
 		while(true){
 			try {
 				string = reader.readLine(); 
-				/*System.out.println(headermarkdown.getCSS(string));
-				System.out.println(boldmarkdown.getCSS(string));
-				System.out.println(bulletmarkdown.getCSS(string));
-				System.out.println(bulletmarkdown.getCurrentState(string));*/
-				System.out.println(mainmarkdown.getCSS(string));
-				System.out.println(mainmarkdown.getCurrentState(string));
-				String temp = mainmarkdown.StringProcess(string);
-				int index[] = mainmarkdown.IntProcess(string);
-				System.out.println("Processed string: "+temp);
-				System.out.println(index[0]+","+index[1]);
+				//and show their options
+				String input = mainmarkdown.process(string);
+				System.out.println(input);
+				String output[] = Markdown.processMarkdown(input);
+				for(int i = 0; i < output.length; i++){
+					System.out.println(output[i]);
+				}
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
