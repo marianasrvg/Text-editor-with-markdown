@@ -24,9 +24,11 @@ public class TextEditorController {
 		ArrayList<Text> content = new ArrayList<>();
 		Text t1 = new Text("Hola ");
 		Text t2 = new Text("Carmen");
-		t2.setFont(Font.font("Verdana", FontWeight.BOLD, 50));
+		Text t3 = new Text("jaja");
+		t2.setFont(Font.font("Verdana", FontWeight.BOLD, 20));
 		content.add(t1);
 		content.add(t2);
+		content.add(t3);
 		Utils.createWindow(null, TextEditorController.this, "fxml/Preview.fxml", "Preview", null, null, content);
 	}
 
