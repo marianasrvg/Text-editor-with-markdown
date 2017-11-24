@@ -2,13 +2,13 @@
 
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.text.TextFlow?>
 
 <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PreviewController">
    <children>
       <ScrollPane prefHeight="594.0" prefWidth="599.0">
          <content>
-            <FlowPane prefHeight="591.0" prefWidth="596.0" />
+            <TextFlow fx:id="textFlow" prefHeight="200.0" prefWidth="200.0" />
          </content>
       </ScrollPane>
    </children>
