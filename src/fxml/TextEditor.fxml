@@ -15,19 +15,19 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-                  <MenuItem mnemonicParsing="false" text="Save" />
-              <MenuItem mnemonicParsing="false" text="Close" />
+                  <MenuItem fx:id = "saveItem" mnemonicParsing="false" text="Save " accelerator="Shortcut+S" onAction = "#save"/>
+              <MenuItem fx:id="closeItem" mnemonicParsing="false" text="Close " accelerator= "Shortcut+E" onAction = "#close"/>
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Preview">
             <items>
-              <MenuItem fx:id="showPreview" mnemonicParsing="false" text="Show Preview in Window" onAction = "#onCreate" />
+              <MenuItem fx:id="showPreview" mnemonicParsing="false" text="Show Preview in Window" onAction = "#onCreate" accelerator = "Shortcut+P" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-                  <MenuItem mnemonicParsing="false" text="Markdown" />
-              <MenuItem mnemonicParsing="false" text="About" />
+                  <MenuItem mnemonicParsing="false" text="Markdown" onAction = "#showMark" accelerator = "Shortcut+M"/>
+              <MenuItem mnemonicParsing="false" text="About" accelerator = "Shortcut+B" onAction = "#showAbout"/>
             </items>
           </Menu>
         </menus>
