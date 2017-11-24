@@ -20,9 +20,9 @@ public class PreviewController implements WindowState {
 	public void onReady() {
 		// TODO Auto-generated method stub
 		content = (ArrayList<Text>) anchorPane.getScene().getWindow().getUserData();
-		System.out.println(content.get(1).getText());
+		//System.out.println(content.get(1).getText());
 		for(int i = 0; i < content.size(); i += 3){
-			textFlow.getChildren().addAll(content.get(i), content.get(i+1), content.get(i+2));
+			textFlow.getChildren().addAll(content.get(i) != null ? content.get(i) : new Text(""), content.get(i+1) != null ? content.get(i+1) : new Text(""), content.get(i+2) != null ? content.get(i+2) : new Text(""));
 		}
 	}
 

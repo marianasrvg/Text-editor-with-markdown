@@ -22,10 +22,10 @@ public class TextEditorController {
 	@FXML public void onCreate(ActionEvent event) {
 		sendToAutomaton();
 		ArrayList<Text> content = new ArrayList<>();
-		Text t1 = new Text("Hola ");
-		Text t2 = new Text("Carmen");
-		Text t3 = new Text("jaja");
-		t2.setFont(Font.font("Verdana", FontWeight.BOLD, 20));
+		Text t1 = new Text("Hola");
+		Text t2 = null;
+		Text t3 = null;
+		//t2.setFont(Font.font("Verdana", FontWeight.BOLD, 20));
 		content.add(t1);
 		content.add(t2);
 		content.add(t3);
