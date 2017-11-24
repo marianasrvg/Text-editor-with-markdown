@@ -8,6 +8,6 @@
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="109.0" prefWidth="208.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
   <children>
-    <TextArea editable="false" layoutX="0.0" layoutY="0.0" prefHeight="109.0" prefWidth="208.0" text="Created by:&#10;&#10;  Mariana Sierra&#10;  Carmen Martinez&#10;  Julián López" wrapText="true" />
+    <TextArea editable="false" layoutX="0.0" layoutY="0.0" prefHeight="109.0" prefWidth="208.0" text="Created by:&#10;&#10;  Mariana Sierra&#10;  Carmen Martinez&#10;  Julián López&#10; Made in last intent to die in finals" wrapText="true" />
   </children>
 </AnchorPane>

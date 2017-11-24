@@ -1,6 +1,7 @@
 package utils;
 
 import java.net.URL;
+import java.util.ArrayList;
 
 import controllers.TextEditorController;
 import interfaces.WindowState;
@@ -13,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -20,7 +22,7 @@ import sun.applet.Main;
 
 public class Utils {
 
-	public static void createWindow(Stage stage, Object parent, String fxmlLocation, String sceneTitle, Object userData, String cssLocation) {
+	public static void createWindow(Stage stage, Object parent, String fxmlLocation, String sceneTitle, Object userData, String cssLocation, ArrayList<Text> content) {
         try {
         	URL fxmlUrl = parent.getClass().getClassLoader().getResource(fxmlLocation);
         	FXMLLoader fxmlLoader = new FXMLLoader(fxmlUrl);
@@ -35,7 +37,7 @@ public class Utils {
 
             if (stage == null) {
 	            	targetStage.initModality(Modality.APPLICATION_MODAL);
-	            	targetStage.setUserData(userData);
+	            	targetStage.setUserData(content);
 	            	targetStage.addEventHandler(WindowEvent.WINDOW_SHOWN, new EventHandler<WindowEvent>() {
 
 						@Override
@@ -47,7 +49,7 @@ public class Utils {
 
 	            	});
             }
-            
+
             targetStage.setScene(scene);
             targetStage.show();
 

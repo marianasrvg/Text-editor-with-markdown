@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PreviewController">
+<AnchorPane fx:id = "anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PreviewController">
    <children>
       <TextArea editable="false" prefHeight="594.0" prefWidth="599.0" />
    </children>
