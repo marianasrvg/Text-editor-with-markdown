@@ -2,98 +2,122 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
 
-public class Main extends Application {
-	//implements EventHandler<ActionEvent>
-	Button button;
+public class Main{
 	
 	private static void mainAFD(AFD markdown){
-		markdown.createAFD(18, 5);
-		char[] symbols = {'a','#','*','1','.'};
+		markdown.createAFD(23, 7);
+		char[] symbols = {'a','#','*','/','+','1','.'};
 		markdown.setSymbols(symbols);
 		State auxiliar_state;
-		for(int i = 0; i < 18;i++){
+		for(int i = 0; i < 23;i++){
 			auxiliar_state = new State(Integer.toString(i), false, false, i);
 			markdown.addState(auxiliar_state);
 		}
 		
 		markdown.states[0].initial_state = true;
+		
+		markdown.states[1].final_state = true;
+		markdown.states[2].final_state = true;
+		markdown.states[3].final_state = true;
+		markdown.states[4].final_state = true;
+		markdown.states[5].final_state = true;
+		markdown.states[6].final_state = true;
 		markdown.states[7].final_state = true;
+		markdown.states[11].final_state = true;
 		markdown.states[12].final_state = true;
-		markdown.states[13].final_state = true;
 		markdown.states[15].final_state = true;
+		markdown.states[16].final_state = true;
+		markdown.states[18].final_state = true;
 		
 		markdown.states[0].addTransition('#', 1);
-		markdown.states[0].addTransition('*', 8);
-		markdown.states[0].addTransition('a', 0);
-		markdown.states[0].addTransition('1', 15);
-		markdown.states[0].check_num = true;	//tiene una transición que se tiene que revisar el ASCII numerico
+		markdown.states[0].addTransition('a', 8);
+		markdown.states[0].addTransition('+', 17);
+		markdown.states[0].addTransition('1', 19);
+		markdown.states[0].addTransition('*', 9);
+		markdown.states[0].addTransition('/', 13);
+		markdown.states[0].check_num = true;
 		
 		//HEADERS
 		markdown.states[1].addTransition('a', 7);
 		markdown.states[1].addTransition('#', 2);
 		markdown.states[1].setCSSName("H1");
+		markdown.states[1].signed = true;
 		
 		markdown.states[2].addTransition('a', 7);
 		markdown.states[2].addTransition('#', 3);
 		markdown.states[2].setCSSName("H2");
+		markdown.states[2].signed = true;
 		
 		markdown.states[3].addTransition('a', 7);
 		markdown.states[3].addTransition('#', 4);
 		markdown.states[3].setCSSName("H3");
+		markdown.states[3].signed = true;
 		
 		markdown.states[4].addTransition('a', 7);
 		markdown.states[4].addTransition('#', 5);
 		markdown.states[4].setCSSName("H4");
+		markdown.states[4].signed = true;
 		
 		markdown.states[5].addTransition('a', 7);
 		markdown.states[5].addTransition('#', 6);
 		markdown.states[5].setCSSName("H5");
+		markdown.states[5].signed = true;
 		
 		markdown.states[6].addTransition('a', 7);
 		markdown.states[6].addTransition('#', 7);
 		markdown.states[6].setCSSName("H6");
+		markdown.states[6].signed = true;
 		
 		markdown.states[7].addTransition('a', 7);
 		
-		//BULLET - ITALICA - BOLD
+		markdown.states[8].addTransition('a', 8);
 		markdown.states[8].addTransition('*', 9);
-		markdown.states[8].addTransition('a', 10);
+		markdown.states[8].addTransition('/', 13);
 		
-		markdown.states[9].addTransition('a', 11);
+		markdown.states[9].addTransition('a', 10);
+		markdown.states[9].signed = true;
 		
 		markdown.states[10].addTransition('a', 10);
-		markdown.states[10].addTransition('*', 12);
-		markdown.states[10].setCSSName("Bullet");
+		markdown.states[10].addTransition('*', 11);
 		
-		markdown.states[11].addTransition('a', 11);
-		markdown.states[11].addTransition('*', 13);
+		markdown.states[11].addTransition('a', 12);
+		markdown.states[11].setCSSName("Bold");
+		markdown.states[11].signed = true;
 		
 		markdown.states[12].addTransition('a', 12);
-		markdown.states[12].setCSSName("Italica");
+		markdown.states[12].setCSSName("Bold");
 		
-		markdown.states[13].addTransition('a', 13);
-		markdown.states[13].addTransition('*', 14);
-
+		markdown.states[13].addTransition('a', 14);
+		markdown.states[13].signed = true;
+		
 		markdown.states[14].addTransition('a', 14);
-		markdown.states[14].setCSSName("Bold");
+		markdown.states[14].addTransition('/', 15);
 		
-		//Numeracion
-		markdown.states[15].addTransition('.', 16);
-		markdown.states[15].addTransition('a', 17);
-		markdown.states[15].addTransition('1', 15);
-		markdown.states[15].check_num = true;
-	
+		markdown.states[15].addTransition('a', 16);
+		markdown.states[15].setCSSName("Italica");
+		markdown.states[15].signed = true;
+		
 		markdown.states[16].addTransition('a', 16);
-		markdown.states[16].setCSSName("Numeracion");
+		markdown.states[16].setCSSName("Italica");
 		
-		markdown.states[17].addTransition('a', 17);
+		markdown.states[17].addTransition('a', 18);
+		markdown.states[17].signed = true;
 		
+		markdown.states[18].addTransition('a', 18);
+		markdown.states[18].setCSSName("Bullet");
+		
+		markdown.states[19].addTransition('1', 19);
+		markdown.states[19].addTransition('.', 20);
+		markdown.states[19].addTransition('a', 22);
+		markdown.states[19].check_num = true;
+		
+		markdown.states[20].addTransition('a', 21);
+		
+		markdown.states[21].addTransition('a', 21);
+		markdown.states[21].setCSSName("Numeracion");
+		
+		markdown.states[22].addTransition('a', 22);		
 	}
 	
 	private static void headerAFD(AFD markdown){
@@ -247,42 +271,16 @@ public class Main extends Application {
 				System.out.println(bulletmarkdown.getCSS(string));
 				System.out.println(bulletmarkdown.getCurrentState(string));*/
 				System.out.println(mainmarkdown.getCSS(string));
+				System.out.println(mainmarkdown.getCurrentState(string));
+				String temp = mainmarkdown.StringProcess(string);
+				int index[] = mainmarkdown.IntProcess(string);
+				System.out.println("Processed string: "+temp);
+				System.out.println(index[0]+","+index[1]);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
-		
-		//launch(args); //to start the application
 	}
 	
-	@Override
-	public void start(Stage primaryStage) throws Exception{
-		primaryStage.setTitle("Markdown text editor");
-		button = new Button();
-		button.setText("Markdown tips!");
-		//button.setOnAction(this);
-		/*button.setOnAction(new EventHandler<ActionEvent>() {
 
-			@Override
-			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
-				System.out.println("type #HEADER1");
-			}
-		});*/
-		
-		button.setOnAction(e->System.out.println("type #HEADER1"));
-		StackPane layout = new StackPane();
-		layout.getChildren().add(button);
-		
-		Scene scene = new Scene(layout, 300, 250);
-		primaryStage.setScene(scene);
-		primaryStage.show();
-	}
-	
-	/*@Override
-	public void handle(ActionEvent event){ //for every event
-		if(event.getSource() == button){ 
-			System.out.println("type #HEADER1");
-		}
-	}*/
 }

@@ -6,8 +6,10 @@ public class State {
 	boolean final_state;
 	boolean initial_state;
 	boolean check_num;
+	boolean signed;
 	HashMap <Character, Integer> transition;
 	String css = null;
+	
 	
 	
 	public State(){
@@ -20,6 +22,8 @@ public class State {
 		final_state = false;
 		initial_state = false;
 		transition = new HashMap<Character, Integer>();
+		this.check_num = false;
+		this.signed = false;
 	}
 	
 	public State(String name, boolean final_state, boolean initial_state, int position){
@@ -28,6 +32,8 @@ public class State {
 		this.final_state = final_state;
 		this.initial_state = initial_state;
 		transition = new HashMap<Character, Integer>();
+		this.check_num = false;
+		this.signed = false;
 	}
 
 	public void addTransition(char symbol, int state_position){
