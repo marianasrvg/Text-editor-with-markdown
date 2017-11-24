@@ -181,7 +181,7 @@ public class Main extends Application {
 	}
 	@Override
 	public void start(Stage primaryStage) throws Exception{
-		Utils.createWindow(primaryStage, Main.this, "fxml/TextEditor.fxml", "Markdown text editor", null, null, null);
+		Utils.createWindow(primaryStage, Main.this, "fxml/TextEditor.fxml", "Markdown text editor", null, null);
 	}
 
 	/*@Override
