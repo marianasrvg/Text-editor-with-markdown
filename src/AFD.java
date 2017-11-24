@@ -128,7 +128,6 @@ public class AFD {
 	public int[] IntProcess(String string){
 		int index[] = new int[2];
 		char test[] = string.toCharArray();
-		String finalString = "";
 		int current_state = initialState();
 		boolean firstIndex = false;
 		
@@ -149,9 +148,7 @@ public class AFD {
 				current_state = states[current_state].getTransition(test[i], default_key);
 			}
 			
-			if(!states[current_state].signed){
-				finalString += test[i];
-			}else{
+			if(states[current_state].signed){
 				if(!firstIndex) {
 					index[0] = i;
 					firstIndex = true;
