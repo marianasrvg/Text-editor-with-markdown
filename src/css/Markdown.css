@@ -1,0 +1,83 @@
+#H1{
+  -fx-font-family: 'Inter UI', sans-serif;
+  -fx-font-size: 28px;
+  -fx-text-alignment: center;
+  -fx-text-fill: gray;
+}
+
+#H2{
+  -fx-font-family: 'Inter UI', sans-serif;
+  -fx-font-size: 26px;
+  -fx-text-alignment: center;
+  -fx-text-fill: gray;
+}
+
+#H3{
+  -fx-font-family: 'Inter UI', sans-serif;
+  -fx-font-size: 24px;
+  -fx-text-alignment: center;
+  -fx-text-fill: gray;
+}
+
+#H4{
+  -fx-font-family: 'Inter UI', sans-serif;
+  -fx-font-size: 22px;
+  -fx-text-alignment: center;
+  -fx-text-fill: gray;
+}
+
+#H5{
+  -fx-font-family: 'Inter UI', sans-serif;
+  -fx-font-size: 20px;
+  -fx-text-alignment: center;
+  -fx-text-fill: gray;
+}
+
+#H6{
+  -fx-font-family: 'Inter UI', sans-serif;
+  -fx-font-size: 18px;
+  -fx-text-alignment: center;
+  -fx-text-fill: gray;
+}
+
+#Bold{
+  -fx-font-family: 'Inter UI', sans-serif;
+  -fx-font-size: 12px;
+  -fx-text-alignment: left;
+  -fx-text-fill: black;
+  -fx-font-weight: bold;
+}
+
+#Italic{
+  -fx-font-family: 'Inter UI', sans-serif;
+  -fx-font-size: 12px;
+  -fx-text-alignment: left;
+  -fx-text-fill: black;
+  -fx-font-style: italic;
+}
+
+#Bullet:before{
+  content:"• ";
+}
+
+#Bullet{
+  -fx-font-family: 'Inter UI', sans-serif;
+  -fx-font-size: 12px;
+  -fx-text-alignment: left;
+  -fx-text-fill: black;
+}
+
+#Numeric{
+  -fx-font-family: 'Inter UI', sans-serif;
+  -fx-font-size: 12px;
+  -fx-text-alignment: left;
+  -fx-text-fill: black;
+  -margin-left: 50px;
+}
+
+#Normal{
+  -fx-font-family: 'Inter UI', sans-serif;
+  -fx-font-size: 12px;
+  -fx-text-alignment: left;
+  -fx-text-fill: black;
+}

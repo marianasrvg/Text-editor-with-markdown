@@ -1,13 +1,19 @@
 import java.util.regex.Pattern;
+import javafx.scene.text.Text;
+import css.*;
 
 public class Markdown {
-	public static String[] processMarkdown(String string){
+	
+	public static Text[] processMarkdown(String string){
 		//Process input variables
 		String css = null;
 		String text = null;
 		int index[] = new int[2];
 		//Output variables
 		String output[] = new String[3];
+		Text text_output0 = null;
+		Text text_output1 = null;
+		Text text_output2 = null;
 		
 		//Process input 		text | index | CSS
 		String input[] = string.split(Pattern.quote("|"));
@@ -24,14 +30,30 @@ public class Markdown {
 				output[0] = text;
 				output[1] = null;
 				output[2] = null;
-				return output;
 			}else if(css.equalsIgnoreCase("Bold") || css.equalsIgnoreCase("Italic")){
-				return processBoldItalic(text, index[0], index[1]);
+				output = processBoldItalic(text, index[0], index[1]);
 			}else{
 				//H#, numeration or bullet
 				//null | text with css | null
-				return processHeaderNumerationBullet(text);
-			}		
+				output = processHeaderNumerationBullet(text);
+			}
+		text_output0 = new Text(output[0]);
+		text_output1 = new Text(output[1]);
+		text_output2 = new Text(output[2]);
+		
+		if(text_output1.equals(null)){
+			text_output1 = assignedCSS(text_output1, "Normal");
+		}else{
+			text_output1 = assignedCSS(text_output1, css);
+		}
+		
+		Text text_output[] = {text_output0, text_output1, text_output2};
+		return text_output;
+	}
+	
+	public static Text assignedCSS(Text text, String string){
+		text.setId(string);
+		return text;
 	}
 	
 	public static String[] processBoldItalic(String string, int indexL, int indexH){
