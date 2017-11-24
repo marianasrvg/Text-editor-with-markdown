@@ -1,8 +1,7 @@
 package controllers;
 
-
+import backend.*;
 import java.util.ArrayList;
-
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,18 +17,12 @@ public class TextEditorController {
 	@FXML MenuItem showPreview;
 	@FXML MenuItem saveItem;
 	@FXML MenuItem closeItem;
+	private 	ArrayList<Text> content = new ArrayList<>();
+
 
 	@FXML public void onCreate(ActionEvent event) {
 		sendToAutomaton();
-		ArrayList<Text> content = new ArrayList<>();
-		Text t1 = new Text("Hola");
-		Text t2 = new Text("Carmen");
-		Text t3 = new Text("uwu");
-		//t2.setFont(Font.font("Verdana", FontWeight.BOLD, 20));
-		content.add(t1);
-		content.add(t2);
-		content.add(t3);
-		Utils.createWindow(null, TextEditorController.this, "fxml/Preview.fxml", "Preview", null, null, content);
+		Utils.createWindow(null, TextEditorController.this, "fxml/Preview.fxml", "Preview", null, "css/Markdown.css", content);
 	}
 
 	@FXML public void showMark(ActionEvent event){
@@ -50,9 +43,17 @@ public class TextEditorController {
 	private void sendToAutomaton() {
 		String text = "";
 		text = body.getText().replaceAll("\n", System.getProperty("line.separator"));
-		//System.out.println(text);
-		/*for(String line : text.split("\n")) {
-			System.out.println("Line "+ line);
-		}*/
+		AFD mainmarkdown = new AFD('a');
+		MarkdownAFD.mainAFD(mainmarkdown);
+		content.clear();
+		for(String line : text.split("\n")) {
+			String result = mainmarkdown.process(line);
+			Text output[] = Markdown.processMarkdown(result);
+			for(int i = 0; i < output.length; i++){
+				System.out.println("id: " + output[i].getId());
+				content.add(output[i]);
+			}
+
+		}
 	}
 }
