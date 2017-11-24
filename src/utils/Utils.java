@@ -1,6 +1,7 @@
 package utils;
 
 import java.net.URL;
+import java.util.ArrayList;
 
 import controllers.TextEditorController;
 import interfaces.WindowState;
@@ -21,7 +22,7 @@ import sun.applet.Main;
 
 public class Utils {
 
-	public static void createWindow(Stage stage, Object parent, String fxmlLocation, String sceneTitle, Object userData, String cssLocation, Text[] content) {
+	public static void createWindow(Stage stage, Object parent, String fxmlLocation, String sceneTitle, Object userData, String cssLocation, ArrayList<Text> content) {
         try {
         	URL fxmlUrl = parent.getClass().getClassLoader().getResource(fxmlLocation);
         	FXMLLoader fxmlLoader = new FXMLLoader(fxmlUrl);
@@ -45,7 +46,6 @@ public class Utils {
 								((WindowState) fxmlLoader.getController()).onReady();
 							}
 						}
-
 	            	});
             }
 
