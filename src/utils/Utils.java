@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -20,7 +21,7 @@ import sun.applet.Main;
 
 public class Utils {
 
-	public static void createWindow(Stage stage, Object parent, String fxmlLocation, String sceneTitle, Object userData, String cssLocation) {
+	public static void createWindow(Stage stage, Object parent, String fxmlLocation, String sceneTitle, Object userData, String cssLocation, Text[] content) {
         try {
         	URL fxmlUrl = parent.getClass().getClassLoader().getResource(fxmlLocation);
         	FXMLLoader fxmlLoader = new FXMLLoader(fxmlUrl);
@@ -47,7 +48,7 @@ public class Utils {
 
 	            	});
             }
-            
+
             targetStage.setScene(scene);
             targetStage.show();
 
