@@ -1,3 +1,4 @@
+package backend;
 import java.util.regex.Pattern;
 import javafx.scene.text.Text;
 import css.*;
@@ -41,12 +42,24 @@ public class Markdown {
 		text_output1 = new Text(output[1]);
 		text_output2 = new Text(output[2]);
 		
+		/*if(text_output0.equals(null)){
+			text_output0 = assignedCSS(text_output0, "Normal");
+		}else{
+			text_output0 = assignedCSS(text_output0, css);
+		}*/
+		
 		if(text_output1.equals(null)){
 			text_output1 = assignedCSS(text_output1, "Normal");
 		}else{
 			text_output1 = assignedCSS(text_output1, css);
 		}
-		
+		/*
+		if(text_output2.equals(null)){
+			text_output2 = assignedCSS(text_output2, "Normal");
+		}else{
+			text_output2 = assignedCSS(text_output2, css);
+		}*/
+		System.out.println(text_output1);
 		Text text_output[] = {text_output0, text_output1, text_output2};
 		return text_output;
 	}
@@ -76,7 +89,9 @@ public class Markdown {
 
 	public static String[] processHeaderNumerationBullet(String string){
 		String output[] = new String[3];
+		output[0] = null;
 		output[1] = string;
+		output[2] = null;
 		return output;
 	}
 }
