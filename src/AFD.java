@@ -72,8 +72,16 @@ public class AFD {
 		char test[] = string.toCharArray();
 		int current_state = initialState();
 		for(int i = 0; i < test.length; i++){
-			current_state = states[current_state].getTransition(test[i], default_key);
-			if(current_state == -1) return "Something went wrong";
+			if(states[current_state].check_num){
+				if(Character.isDigit(test[i])){
+					current_state = states[current_state].getTransition('1', default_key);
+				}else{
+					current_state = states[current_state].getTransition(test[i], default_key);
+				}
+			}else{
+				current_state = states[current_state].getTransition(test[i], default_key);
+			}
+			if(current_state == -1) return "No style";
 			if(states[current_state].css != null){
 				last_css = states[current_state].css;
 			}
@@ -85,11 +93,107 @@ public class AFD {
 		char test[] = string.toCharArray();
 		int current_state = initialState();
 		for(int i = 0; i < test.length; i++){
-			current_state = states[current_state].getTransition(test[i], default_key);
+			if(states[current_state].check_num){
+				if(Character.isDigit(test[i])){
+					current_state = states[current_state].getTransition('1', default_key);
+				}else{
+					current_state = states[current_state].getTransition(test[i], default_key);
+				}
+			}else{
+				current_state = states[current_state].getTransition(test[i], default_key);
+			}
 			if(current_state == -1) return "Something went wrong";
 		}
 		return states[current_state].name;
 	}
 	
+	public int getFinalStatePosition(String string){
+		char test[] = string.toCharArray();
+		int current_state = initialState();
+		for(int i = 0; i < test.length; i++){
+			if(states[current_state].check_num){
+				if(Character.isDigit(test[i])){
+					current_state = states[current_state].getTransition('1', default_key);
+				}else{
+					current_state = states[current_state].getTransition(test[i], default_key);
+				}
+			}else{
+				current_state = states[current_state].getTransition(test[i], default_key);
+			}
+			if(current_state == -1) return -1;
+		}
+		return current_state;
+	}
 	
+	public int[] IntProcess(String string){
+		int index[] = new int[2];
+		char test[] = string.toCharArray();
+		String finalString = "";
+		int current_state = initialState();
+		boolean firstIndex = false;
+		
+		if(!states[getFinalStatePosition(string)].final_state){
+			index[0] = 0;
+			index[1] = test.length-1;
+			return index;
+		}
+		
+		for(int i = 0; i < test.length; i++){ 
+			if(states[current_state].check_num){
+				if(Character.isDigit(test[i])){
+					current_state = states[current_state].getTransition('1', default_key);
+				}else{
+					current_state = states[current_state].getTransition(test[i], default_key);
+				}
+			}else{
+				current_state = states[current_state].getTransition(test[i], default_key);
+			}
+			
+			if(!states[current_state].signed){
+				finalString += test[i];
+			}else{
+				if(!firstIndex) {
+					index[0] = i;
+					firstIndex = true;
+				}
+				else{
+					index[1] = i-2;
+				}
+			}
+		}
+		return index;
+	} 
+	
+	public String StringProcess(String string){
+		char test[] = string.toCharArray();
+		String finalString = "";
+		int current_state = initialState();
+		
+		if(!states[getFinalStatePosition(string)].final_state){
+			return string;
+		}
+		
+		for(int i = 0; i < test.length; i++){ 
+			if(states[current_state].check_num){
+				if(Character.isDigit(test[i])){
+					current_state = states[current_state].getTransition('1', default_key);
+				}else{
+					current_state = states[current_state].getTransition(test[i], default_key);
+				}
+			}else{
+				current_state = states[current_state].getTransition(test[i], default_key);
+			}
+			if(!states[current_state].signed){
+				finalString += test[i];
+			}	
+		}
+		return finalString;
+	}
+	
+	public String process(String string){
+		String output = "";
+		int index[] = IntProcess(string);
+		output = this.StringProcess(string) +"|"+index[0]+","+index[1]+"|"+this.getCSS(string);
+		return output;
+	}
 }
