@@ -17,6 +17,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 import sun.applet.Main;
 
@@ -28,6 +29,9 @@ public class Utils {
         	FXMLLoader fxmlLoader = new FXMLLoader(fxmlUrl);
         	Pane root = (Pane) fxmlLoader.load();
             Stage targetStage = (stage != null) ? stage : new Stage();
+            if(sceneTitle.equals("Preview")){
+            	targetStage.initStyle(StageStyle.UNDECORATED);
+            }
             targetStage.setTitle(sceneTitle);
             Scene scene =  new Scene(root);
 
