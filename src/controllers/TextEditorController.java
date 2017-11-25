@@ -80,11 +80,13 @@ public class TextEditorController {
 
 	private void saveFile(String content, File file){
 		try {
+			if(file != null){
             FileWriter fileWriter = null;
 
             fileWriter = new FileWriter(file);
             fileWriter.write(content);
             fileWriter.close();
+			}
         } catch (IOException ex) {
             //ogger.getLogger(JavaFX_Text.class.getName()).log(Level.SEVERE, null, ex);
         	ex.printStackTrace();
