@@ -14,7 +14,7 @@
    <children>
       <ScrollPane prefHeight="594.0" prefWidth="599.0">
          <content>
-            <TextFlow fx:id="textFlow" onMouseDragged = "#drag" prefHeight="590.0" prefWidth="595.0" />
+            <TextFlow fx:id="textFlow" styleClass= "txtflow" onMouseDragged = "#drag" prefHeight="590.0" prefWidth="595.0" />
          </content>
       </ScrollPane>
       <MenuBar layoutX="88.0" layoutY="82.0" visible="false" prefWidth = "590.0">
