@@ -67,7 +67,6 @@ public class Markdown {
 		for(int i = 0; i < indexL; i++){
 			output[0] += arraystring[i];
 		}
-		//if(indexL == 0) output[0] = null;
 		for(int i = indexL; i <= indexH; i++){
 			//apply CSS
 			output[1] += arraystring[i];
@@ -75,7 +74,6 @@ public class Markdown {
 		for(int i = indexH+1; i < arraystring.length; i++){
 			output[2] += arraystring[i];
 		}
-		//if(indexH == arraystring.length-1) output[2] = null;
 		return output;
 	}
 

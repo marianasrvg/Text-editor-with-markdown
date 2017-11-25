@@ -49,26 +49,12 @@ public class Utils {
 
 	            	});
             }
-
             targetStage.setScene(scene);
             targetStage.show();
-
         }
         catch (Exception e) {
             e.printStackTrace();
         }
 	}
-
-
-	public static void closeWindow(ActionEvent event) {
-		((Node) (event.getSource())).getScene().getWindow().hide();
-	}
-
-	public static void showError(String message) {
-		Alert alert = new Alert(AlertType.ERROR);
-		alert.setHeaderText(message);
-		alert.show();
-	}
-
 
 }
