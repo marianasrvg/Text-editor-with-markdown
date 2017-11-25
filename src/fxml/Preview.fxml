@@ -10,11 +10,11 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PreviewController">
+<AnchorPane fx:id="anchorPane"  onMousePressed = "#press" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PreviewController">
    <children>
       <ScrollPane prefHeight="594.0" prefWidth="599.0">
          <content>
-            <TextFlow fx:id="textFlow" prefHeight="590.0" prefWidth="595.0" />
+            <TextFlow fx:id="textFlow" onMouseDragged = "#drag" prefHeight="590.0" prefWidth="595.0" />
          </content>
       </ScrollPane>
       <MenuBar layoutX="88.0" layoutY="82.0" visible="false" prefWidth = "590.0">

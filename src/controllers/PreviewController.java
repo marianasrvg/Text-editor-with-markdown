@@ -7,6 +7,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
@@ -14,6 +15,8 @@ import javafx.stage.Stage;
 
 public class PreviewController implements WindowState {
 
+	private double xOffset = 0;
+	private double yOffset = 0;
 	private ArrayList<Text> content;
 	@FXML private TextFlow textFlow;
 	@FXML private AnchorPane anchorPane;
@@ -49,4 +52,14 @@ public class PreviewController implements WindowState {
 		stage.close();
 	}
 
+	@FXML public void press(MouseEvent event){
+        xOffset = event.getSceneX();
+        yOffset = event.getSceneY();
+	}
+
+	@FXML public void drag(MouseEvent event){
+		Stage stage =(Stage) anchorPane.getScene().getWindow();
+        stage.setX(event.getScreenX() - xOffset);
+        stage.setY(event.getScreenY() - yOffset);
+	}
 }
