@@ -87,7 +87,7 @@ public class AFD {
 				last_css = states[current_state].css;
 			}
 		}
-		return last_css;
+		return last_css != null ? last_css:"Normal";
 	}
 	
 	public String getCurrentState(String string){
