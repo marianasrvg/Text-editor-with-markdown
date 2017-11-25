@@ -1,9 +1,4 @@
 
-@font-face {
-    font-family: 'Roboto';
-    src: url('Roboto-Light.ttf');
-}
-
 #H1{
   -fx-font-family: 'Arial';
   -fx-font-size: 36px;
