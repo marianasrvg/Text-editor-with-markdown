@@ -1,56 +1,52 @@
-#H1{
-  -fx-font-family: 'Inter UI';
-  -fx-font-size: 40px;
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('Roboto-Light.ttf');
 }
 
-#H2{
-  -fx-font-family: 'Inter UI';
+#H1{
+  -fx-font-family: 'Roboto';
   -fx-font-size: 36px;
 }
 
-#H3{
-  -fx-font-family: 'Inter UI';
+#H2{
+  -fx-font-family: 'Roboto';
   -fx-font-size: 32px;
 }
 
-#H4{
-  -fx-font-family: 'Inter UI';
+#H3{
+  -fx-font-family: 'Roboto';
   -fx-font-size: 28px;
 }
 
-#H5{
-  -fx-font-family: 'Inter UI';
+#H4{
+  -fx-font-family: 'Roboto';
   -fx-font-size: 24px;
 }
 
-#H6{
-  -fx-font-family: 'Inter UI';
+#H5{
+  -fx-font-family: 'Roboto';
   -fx-font-size: 20px;
 }
 
-#Bold{
-  -fx-font-family: 'Inter UI';
+#H6{
+  -fx-font-family: 'Roboto';
   -fx-font-size: 18px;
+}
+
+#Bold{
+  -fx-font-family: 'Roboto';
+  -fx-font-size: 16px;
   -fx-font-weight: bold;
 }
 
 #Italic{
-  -fx-font-family: 'Inter UI';
-  -fx-font-size: 18px;
+  -fx-font-family: 'Roboto';
+  -fx-font-size: 16px;
   -fx-font-style: italic;
 }
 
-#Bullet:before{
-  content:"123 ";
-}
-
-#Bullet{
-  -fx-font-family: 'Inter UI';
-  -fx-font-size: 18px;
-}
-
-
 #Normal{
-  -fx-font-family: 'Inter UI';
-  -fx-font-size: 18px;
+  -fx-font-family: 'Roboto';
+  -fx-font-size: 16px;
 }
