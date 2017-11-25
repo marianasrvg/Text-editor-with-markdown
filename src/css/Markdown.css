@@ -49,11 +49,6 @@
   -fx-font-size: 18px;
 }
 
-#Numeric{
-   -fx-font-family: 'Inter UI';
-  -fx-font-size: 18px;
-  -margin-left: 50px;
-}
 
 #Normal{
   -fx-font-family: 'Inter UI';

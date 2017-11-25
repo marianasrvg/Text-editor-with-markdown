@@ -41,7 +41,15 @@ public class Markdown {
 				//H#, numeration or bullet
 				//null | text with css | null
 				output = processHeaderNumerationBullet(text);
+				if(css.equalsIgnoreCase("Numeration")){
+					output[0] = "\t";
+					css = "Normal";
+				}else if(css.equalsIgnoreCase("Bullet")){
+					output[0] = "\t"+(char)187+" ";
+					css = "Normal";
+				}
 			}
+			
 		text_output0 = new Text(output[0]);
 		text_output1 = new Text(output[1]);
 		text_output2 = new Text(output[2]);
