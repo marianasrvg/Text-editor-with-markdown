@@ -3,6 +3,12 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.TextFlow?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PreviewController">
    <children>
@@ -11,5 +17,14 @@
             <TextFlow fx:id="textFlow" prefHeight="590.0" prefWidth="595.0" />
          </content>
       </ScrollPane>
+      <MenuBar layoutX="88.0" layoutY="82.0" visible="false" prefWidth = "590.0">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem fx:id = "closeItem" mnemonicParsing="false" text="Close" accelerator = "Shortcut+E" onAction = "#close" />
+          </items>
+        </Menu>
+      </menus>
+      </MenuBar>
    </children>
 </AnchorPane>
