@@ -1,5 +1,8 @@
 package backend;
 import java.util.regex.Pattern;
+
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import css.*;
 
@@ -27,12 +30,13 @@ public class Markdown {
 		System.out.println(css +" "+text+" "+index[0]+" "+index[1]);
 		//Check what type of CSS is
 			
-			if(css.equals(null)){
+			if(css.equalsIgnoreCase("Normal")){
 				output[0] = text;
-				output[1] = null;
-				output[2] = null;
+				output[1] = "";
+				output[2] = "";
 			}else if(css.equalsIgnoreCase("Bold") || css.equalsIgnoreCase("Italic")){
 				output = processBoldItalic(text, index[0], index[1]);
+				//text_output1.setFont(Font.font("Verdana", FontWeight.BOLD, 13));
 			}else{
 				//H#, numeration or bullet
 				//null | text with css | null
@@ -42,24 +46,12 @@ public class Markdown {
 		text_output1 = new Text(output[1]);
 		text_output2 = new Text(output[2]);
 		
-		/*if(text_output0.equals(null)){
-			text_output0 = assignedCSS(text_output0, "Normal");
-		}else{
-			text_output0 = assignedCSS(text_output0, css);
-		}*/
-		
-		if(text_output1.equals(null)){
-			text_output1 = assignedCSS(text_output1, "Normal");
-		}else{
-			text_output1 = assignedCSS(text_output1, css);
-		}
-		/*
-		if(text_output2.equals(null)){
-			text_output2 = assignedCSS(text_output2, "Normal");
-		}else{
-			text_output2 = assignedCSS(text_output2, css);
-		}*/
-		System.out.println(text_output1);
+
+		text_output0 = assignedCSS(text_output0, "Normal");
+		text_output2 = assignedCSS(text_output2, "Normal");
+		text_output1 = assignedCSS(text_output1, css);
+
+
 		Text text_output[] = {text_output0, text_output1, text_output2};
 		return text_output;
 	}
