@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 public class AboutController {
 
 	@FXML private AnchorPane anchorPane;
-	private KeyCombination ctrlE = new KeyCodeCombination(KeyCode.E, KeyCombination.CONTROL_DOWN);
+	private KeyCombination ctrlE = new KeyCodeCombination(KeyCode.W, KeyCombination.CONTROL_DOWN);
 
 
 	@FXML public void onKeyPressed(KeyEvent event){

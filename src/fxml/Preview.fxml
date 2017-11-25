@@ -21,7 +21,7 @@
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>
-            <MenuItem fx:id = "closeItem" mnemonicParsing="false" text="Close" accelerator = "Shortcut+E" onAction = "#close" />
+            <MenuItem fx:id = "closeItem" mnemonicParsing="false" text="Close" accelerator = "Shortcut+W" onAction = "#close" />
           </items>
         </Menu>
       </menus>

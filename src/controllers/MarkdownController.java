@@ -16,7 +16,7 @@ public class MarkdownController{
 	@FXML private AnchorPane anchorPane;
 	@FXML private TextArea textArea;
 
-	private KeyCombination ctrlE = new KeyCodeCombination(KeyCode.E, KeyCombination.CONTROL_DOWN);
+	private KeyCombination ctrlE = new KeyCodeCombination(KeyCode.W, KeyCombination.CONTROL_DOWN);
 
 
 	@FXML public void keyPressed(KeyEvent event){
