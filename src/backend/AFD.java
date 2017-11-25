@@ -1,4 +1,4 @@
-package backend;
+	package backend;
 
 
 public class AFD {
@@ -148,7 +148,7 @@ public class AFD {
 			}else{
 				current_state = states[current_state].getTransition(test[i], default_key);
 			}
-			
+
 			if(states[current_state].signed){
 				if(!firstIndex) {
 					index[0] = i;
