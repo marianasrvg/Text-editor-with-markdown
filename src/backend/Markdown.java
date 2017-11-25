@@ -27,7 +27,6 @@ public class Markdown {
 		index[0] = Integer.parseInt(temp_index[0]);
 		index[1] = Integer.parseInt(temp_index[1]);
 		
-		System.out.println(css +" "+text+" "+index[0]+" "+index[1]);
 		//Check what type of CSS is
 			
 			if(css.equalsIgnoreCase("Normal")){
