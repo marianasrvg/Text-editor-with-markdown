@@ -63,7 +63,7 @@ public class TextEditorController {
 	}
 	private void sendToAutomaton() {
 		String text = "";
-		text = body.getText().replaceAll("\n", System.getProperty("line.separator"));
+		text = body.getText().replaceAll("\r\n", System.getProperty("line.separator"));
 		AFD mainmarkdown = new AFD('a');
 		MarkdownAFD.mainAFD(mainmarkdown);
 		content.clear();
